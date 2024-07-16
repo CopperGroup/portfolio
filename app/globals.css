@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, color(display-p3 0.5581 0.2888 0.0801), color(display-p3 1 0.8012 0.5714));
+    background: -webkit-radial-gradient(45deg, #662E00, #D47800);
+    background: -moz-radial-gradient(45deg, #662E00, #D47800);
+    background: -o-radial-gradient(45deg, #662E00, #D47800);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+
+  .blury-gradient {
+    background: linear-gradient(45deg, color(display-p3 0.5581 0.2888 0.0801), color(display-p3 1 0.8012 0.5714));
+    background: -webkit-radial-gradient(45deg, #662E00, #D47800);
+    background: -moz-radial-gradient(45deg, #662E00, #D47800);
+    background: -o-radial-gradient(45deg, #662E00, #D47800);
+    filter: blur(20px);
+  }
+
+  .gradient {
+    background: linear-gradient(45deg, color(display-p3 0.5581 0.2888 0.0801), color(display-p3 1 0.8012 0.5714));
+    background: -webkit-radial-gradient(45deg, #662E00, #D47800);
+    background: -moz-radial-gradient(45deg, #662E00, #D47800);
+    background: -o-radial-gradient(45deg, #662E00, #D47800);
+  }
+}
