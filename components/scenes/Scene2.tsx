@@ -14,7 +14,7 @@ const Scene1 = () => {
      shadows
      camera={{position: [0, 0, 1], fov: 100}}
      gl={{preserveDrawingBuffer: true}}
-     className='absolute w-full max-w-full h-full transition-all ease-in z-20 border border-red-500'
+     className='absolute w-full max-w-full h-full transition-all ease-in z-20 pointer-events-none'
     >
         <ambientLight intensity={0.5}/>
         <Environment preset='city'/>
@@ -22,7 +22,7 @@ const Scene1 = () => {
         <CameraRig2>
           <Center>
               <CopperIngotPolished/>
-              <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+              {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
           </Center>
         </CameraRig2>
         <Preload all/>

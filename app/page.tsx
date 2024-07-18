@@ -10,6 +10,8 @@ import { Archivo_Black } from "next/font/google";
 import Projects from "@/components/sections/Projects";
 import Final from "@/components/sections/Final";
 import dynamic from 'next/dynamic';
+import Specialization from '@/components/sections/Specialization';
+import Skils from '@/components/sections/Skils';
 
 const Scene1 = dynamic(() => import("@/components/scenes/Scene1"), { ssr: false })
 
@@ -59,6 +61,8 @@ export default function Home() {
         </motion.div>
       </motion.section>
       <Projects/>
+      <Specialization/>
+      <Skils/>
       <Final/>
     </ReactLenis>
   );

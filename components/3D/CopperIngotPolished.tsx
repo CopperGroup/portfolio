@@ -14,7 +14,7 @@ const CopperIngotPolished = () => {
   console.log(nodes);
   
   return (
-    <group ref={modelRef} rotation={[0.2, 0, 0]}>
+    <group ref={modelRef} rotation={[0.2, 0, 0]} scale={1.5}>
         <mesh {...nodes.pCube1_lambert1_0}  position={[0, -0.5, 0]}></mesh>
       </group>
     );
