@@ -25,7 +25,7 @@ const Final = () => {
 
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  const backgroundImage = useMotionTemplate`radial-gradient(175% 175% at 50% 0%, #000000 50%, #D47800)`;
+  const backgroundImage = useMotionTemplate`radial-gradient(160% 160% at 50% 0%, #000000 50%, #D47800)`;
 
   return (
     <motion.section
@@ -34,8 +34,10 @@ const Final = () => {
      }} 
      className="w-full h-screen flex flex-1 flex-col justify-center items-center text-white"
     >
-      <Canvas>
-        <Stars radius={50} count={2500} factor={4} fade speed={2}/>
+      <Canvas className="absolute z-20 pointer-events-none">
+        <CameraRig>
+          <Stars radius={50} count={2500} factor={4} fade speed={2}/>
+        </CameraRig>
       </Canvas>
       <div className="absolute w-full flex flex-col justify-center items-center">
         <Counter from={0} to={94} duration={3}/>
@@ -67,7 +69,7 @@ const Final = () => {
          }}
          className="mt-10"
         >
-          <Link href="/"className="text-body-medium gradient px-16 py-4 rounded-[2rem]">Contact us</Link>
+          <Link href="/contact-us" className="relative z-30 text-body-medium gradient px-16 py-4 rounded-[2rem]">Contact us</Link>
         </motion.div>
       </div>
     </motion.section>

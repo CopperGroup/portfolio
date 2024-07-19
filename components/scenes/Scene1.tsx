@@ -6,6 +6,7 @@ import CameraRig from "@/components/3D/CameraRig";
 import Backdrop from "@/components/3D/Backdrop";
 import CopperIngot from "@/components/3D/CopperIngot";
 import CopperIngotPolished from "../3D/CopperIngotPolished";
+import { Suspense } from "react";
 
 const Scene1 = () => {
 
@@ -21,7 +22,9 @@ const Scene1 = () => {
       <CameraRig>
           <Backdrop/>
           <Center>
+            <Suspense fallback={null}>
               <CopperIngot/>
+            </Suspense>
           </Center>
       </CameraRig>
       <Preload all/>
