@@ -13,21 +13,27 @@ const archivo = Archivo_Black({
 
 const ContactForm = () => {
     const [ page, setPage ] = useState(0);
+    const [ background, setBackground ] = useState({ startBackground: "", endBackground: "" })
     const controls = useAnimation();
-
-    console.log(page);
 
     const startPercentage = 15;
     const endPercentage = 32;
 
-    const startBackground = `radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(102,46,0,0.8519782913165266) 13%, rgba(212,120,0,0.896796218487395) ${startPercentage}%, rgba(0,0,0,1) 100%)`;
-    const endBackground = `radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(102,46,0,0.8519782913165266) 13%, rgba(212,120,0,0.896796218487395) ${endPercentage}%, rgba(0,0,0,1) 100%)`;
+    useEffect(() => {
+        const fromColor = page === 0 ? "rgba(184,107,119,0.8519782913165266)" : page === 1 ? "rgba(168,169,173,0.8519782913165266)" : page === 2 && "rgba(102,46,0,0.8519782913165266)";
+        const toColor = page === 0 ? "rgba(207,152,159,0.8855917366946778)" : page === 1 ? "rgba(203,204,205,0.8855917366946778)" : page === 2 && "rgba(212,120,0,0.896796218487395)";
+
+        setBackground({
+            startBackground: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${fromColor} 13%, ${toColor} ${startPercentage}%, rgba(0,0,0,1) 100%)`,
+            endBackground: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${fromColor} 13%, ${toColor} ${endPercentage}%, rgba(0,0,0,1) 100%)`
+        })
+    })
 
     return (
         <motion.div
          key={page}
          animate={{
-            background: [startBackground, endBackground]
+            background: [background.startBackground, background.endBackground]
          }} 
          transition={{
             type: "spring",
