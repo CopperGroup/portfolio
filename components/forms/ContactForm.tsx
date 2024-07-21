@@ -1,10 +1,15 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod"
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import { Archivo_Black } from "next/font/google";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form"
+import { z } from "zod";
+import { contactValidation } from "@/lib/validations/contact";
+import { useRouter } from "next/navigation";
 
 const archivo = Archivo_Black({ 
     weight: "400", 
@@ -13,8 +18,9 @@ const archivo = Archivo_Black({
 
 const ContactForm = () => {
     const [ page, setPage ] = useState(0);
-    const [ background, setBackground ] = useState({ startBackground: "", endBackground: "" })
-    const controls = useAnimation();
+    const [ background, setBackground ] = useState({ startBackground: "", endBackground: "" });
+
+    const router = useRouter();
 
     const startPercentage = 15;
     const endPercentage = 32;
@@ -27,7 +33,17 @@ const ContactForm = () => {
             startBackground: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${fromColor} 13%, ${toColor} ${startPercentage}%, rgba(0,0,0,1) 100%)`,
             endBackground: `radial-gradient(circle, rgba(0,0,0,1) 0%, ${fromColor} 13%, ${toColor} ${endPercentage}%, rgba(0,0,0,1) 100%)`
         })
+    }, [page])
+
+    const form = useForm<z.infer<typeof contactValidation>>({
+        resolver: zodResolver(contactValidation)
     })
+
+    const onSubmit = (data: z.infer<typeof contactValidation>) => {
+        setPage(3);
+
+        setTimeout(() => router.push("/"), 2000)
+    }
 
     return (
         <motion.div
@@ -43,16 +59,34 @@ const ContactForm = () => {
         >
             <div className="w-7/12 h-full border-green-500">
                 <div className="w-full h-1/2 flex justify-end flex-col gap-7 border-blue px-10 py-9 overflow-hidden">
-                    <div className="w-full h-2/5 overflow-hidden px-3">
-                        <motion.div
-                        layout
-                        animate={{
-                            transform: `translateY(${(page >= 0 && page <= 2) && page * -100}%)`,
-                            opacity: page === 0 ? 1 : 0
-                        }}
-                        >
-                            <div className="w-fit h-fit overflow-hidden">
-                                <motion.h2 
+                    <FormProvider {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)}className="w-full h-2/5 overflow-hidden px-3">
+                            <motion.div
+                            layout
+                            animate={{
+                                transform: `translateY(${(page >= 0 && page <= 3) && page * -100}%)`,
+                                opacity: page === 0 ? 1 : 0
+                            }}
+                            >
+                                <div className="w-fit h-fit overflow-hidden">
+                                    <motion.h2 
+                                    initial={{
+                                        y: 100,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1
+                                    }}
+                                    transition={{
+                                        duration: 0.4,
+                                    }}
+                                    className={`${archivo.className} text-[56px]`}
+                                    >
+                                        Provide your email
+                                    </motion.h2>
+                                </div>
+                                <motion.input
                                 initial={{
                                     y: 100,
                                     opacity: 0
@@ -62,41 +96,42 @@ const ContactForm = () => {
                                     opacity: 1
                                 }}
                                 transition={{
-                                    duration: 0.4,
+                                    type: "spring",
+                                    duration: 0.7,
+                                    delay: 0.24
                                 }}
-                                className={`${archivo.className} text-[56px]`}
-                                >
-                                    Provide your email
-                                </motion.h2>
-                            </div>
-                            <motion.input
-                            initial={{
-                                y: 100,
-                                opacity: 0
-                            }}
+                                type="email"
+                                className="w-full h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
+                                {...form.register("email")}
+                                placeholder="Email"
+                                />
+                            </motion.div>
+                            <motion.div
+                            layout
                             animate={{
-                                y: 0,
-                                opacity: 1
+                                transform: `translateY(${(page >= 0 && page <= 3) && page * -100}%)`,
+                                opacity: page === 1 ? 1 : 0
                             }}
-                            transition={{
-                                type: "spring",
-                                duration: 0.7,
-                                delay: 0.24
-                            }}
-                            type="email"
-                            className="w-full h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
-                            placeholder="Email"
-                            />
-                        </motion.div>
-                        <motion.div
-                        layout
-                        animate={{
-                            transform: `translateY(${(page >= 0 && page <= 2) && page * -100}%)`,
-                            opacity: page === 1 ? 1 : 0
-                        }}
-                        >
-                            <div className="w-fit h-fit overflow-hidden">
-                                <motion.h2 
+                            >
+                                <div className="w-fit h-fit overflow-hidden">
+                                    <motion.h2 
+                                    initial={{
+                                        y: 100,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1
+                                    }}
+                                    transition={{
+                                        duration: 0.4,
+                                    }}
+                                    className={`${archivo.className} text-[56px]`}
+                                    >
+                                        Your name
+                                    </motion.h2>
+                                </div>
+                                <motion.input
                                 initial={{
                                     y: 100,
                                     opacity: 0
@@ -106,78 +141,110 @@ const ContactForm = () => {
                                     opacity: 1
                                 }}
                                 transition={{
-                                    duration: 0.4,
+                                    type: "spring",
+                                    duration: 0.7,
+                                    delay: 0.24
                                 }}
-                                className={`${archivo.className} text-[56px]`}
-                                >
-                                    Your name
-                                </motion.h2>
-                            </div>
-                            <motion.input
-                            initial={{
-                                y: 100,
-                                opacity: 0
-                            }}
+                                type="text"
+                                className="w-full h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
+                                {...form.register("name")}
+                                placeholder="Name"
+                                />
+                            </motion.div>
+                            <motion.div
+                            layout
                             animate={{
-                                y: 0,
-                                opacity: 1
-                            }}
-                            transition={{
-                                type: "spring",
-                                duration: 0.7,
-                                delay: 0.24
-                            }}
-                            type="text"
-                            className="w-full h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
-                            placeholder="Name"
-                            />
-                        </motion.div>
-                        <motion.div
-                        layout
-                        animate={{
-                            transform: `translateY(${(page >= 0 && page <= 2) && page * -100}%)`,
-                            opacity: page === 2 ? 1 : 0
-                        }} 
-                        >
-                            <div className="w-fit h-fit overflow-hidden">
-                                <motion.h2 
-                                initial={{
-                                    y: 100,
-                                    opacity: 0
-                                }}
-                                animate={{
-                                    y: 0,
-                                    opacity: 1
-                                }}
-                                transition={{
-                                    duration: 0.4,
-                                }}
-                                className={`${archivo.className} text-[56px]`}
-                                >
-                                    Phone number
-                                </motion.h2>
-                            </div>
-                            <motion.input
-                            initial={{
-                                y: 100,
-                                opacity: 0
-                            }}
+                                transform: `translateY(${(page >= 0 && page <= 3) && page * -100}%)`,
+                                opacity: page === 2 ? 1 : 0
+                            }} 
+                            >
+                                <div className="w-fit h-fit overflow-hidden">
+                                    <motion.h2 
+                                    initial={{
+                                        y: 100,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1
+                                    }}
+                                    transition={{
+                                        duration: 0.4,
+                                    }}
+                                    className={`${archivo.className} text-[56px]`}
+                                    >
+                                        Phone number
+                                    </motion.h2>
+                                </div>
+                                <div className="w-full flex gap-2">
+                                    <motion.input
+                                    initial={{
+                                        y: 100,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1
+                                    }}
+                                    transition={{
+                                        type: "spring",
+                                        duration: 0.7,
+                                        delay: 0.24
+                                    }}
+                                    type="text"
+                                    className="w-2/3 h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
+                                    {...form.register("phoneNumber")}
+                                    placeholder="Phone number"
+                                    />
+                                    <button type="submit" className="w-1/3 h-10 rounded-3xl border hover:w-2/3 transition-all">Get my website</button>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                            layout
                             animate={{
-                                y: 0,
-                                opacity: 1
-                            }}
-                            transition={{
-                                type: "spring",
-                                duration: 0.7,
-                                delay: 0.24
-                            }}
-                            type="text"
-                            className="w-full h-10 text-white/80 rounded-3xl ml-2 bg-dark-2 border px-5" 
-                            placeholder="Phone number"
-                            />
-                        </motion.div>
-                    
-                    </div>
+                                transform: `translateY(${(page >= 0 && page <= 3) && page * -100}%)`,
+                                opacity: page === 3 ? 1 : 0
+                            }} 
+                            >
+                                <div className="w-fit h-fit overflow-hidden">
+                                    <motion.h2 
+                                    initial={{
+                                        y: 100,
+                                        opacity: 0
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                        opacity: 1
+                                    }}
+                                    transition={{
+                                        duration: 0.4,
+                                    }}
+                                    className={`${archivo.className} text-[56px]`}
+                                    >
+                                        Success
+                                    </motion.h2>
+                                    <motion.p
+                                     initial={{
+                                        y: 100,
+                                        opacity: 0
+                                     }}
+                                     animate={{
+                                        y: 0,
+                                        opacity: 1
+                                     }}
+                                     transition={{
+                                        type: "spring",
+                                        duration: 0.7,
+                                        delay: 0.24
+                                     }}
+                                     className="w-full h-10 px-1"
+                                    >
+                                        We will reach you out in 24 hours!
+                                    </motion.p>
+                                </div>
+                            </motion.div>
+                        </form>
+                    </FormProvider>
                 </div>
                 <div className="w-full h-1/2 overflow-hidden">
                     <motion.div
@@ -242,7 +309,7 @@ const ContactForm = () => {
                     </motion.div>
                 </div>
                 <div className="absolute w-full flex justify-end border-green-500 top-1/2 px-7">
-                    {page !== 0 && (
+                    {page > 0 && page < 3 && (
                         <motion.div 
                         layout
                         className="w-fit h-fit"
@@ -258,7 +325,7 @@ const ContactForm = () => {
                             <HiArrowLongLeft className="size-16 cursor-pointer"/>
                         </motion.div>
                     )}
-                    {page !== 2 && (
+                    {page < 2 && (
                         <motion.div 
                         layout
                         className="w-fit h-fit"
@@ -269,7 +336,7 @@ const ContactForm = () => {
                             type: "spring",
                             duration: 0.5
                         }}
-                        onClick={() => setPage(currentPage => currentPage + 1)}
+                        onClick={() => page !== 2 && (setPage(currentPage => currentPage + 1))}
                         >
                             <HiArrowLongRight className="size-16 cursor-pointer"/>
                         </motion.div>

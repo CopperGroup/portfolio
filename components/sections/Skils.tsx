@@ -1,3 +1,5 @@
+"use client";
+
 import { SiNextdotjs, SiReact, SiMongodb, SiThreedotjs, SiJavascript, SiTailwindcss, SiCodemagic } from "react-icons/si";
 import { FaStarOfLife } from "react-icons/fa6";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";

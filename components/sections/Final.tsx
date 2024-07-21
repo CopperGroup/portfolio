@@ -1,6 +1,6 @@
-import { Center, Environment, Preload, Stars } from "@react-three/drei";
+"use client";
+
 import { Canvas } from "@react-three/fiber";
-import { ReactLenis } from 'lenis/react';
 import {
   motion,
   useInView,
@@ -10,14 +10,11 @@ import {
   useTransform,
 } from "framer-motion";
 import CameraRig from "@/components/3D/CameraRig";
-import Backdrop from "@/components/3D/Backdrop";
-import CopperIngot from "@/components/3D/CopperIngot";
 import { useRef, useState } from "react";
-import CopperIngotPolished from "@/components/3D/CopperIngotPolished";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Counter from "../animated/Counter";
 import Link from "next/link";
+import { Stars } from "@react-three/drei";
 
 const Scene2 = dynamic(() => import("@/components/scenes/Scene2"), { ssr: false })
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import ReactLenis from "lenis/react";
 import { useRef } from "react";
 
 const Specialization = () => {
@@ -29,17 +30,19 @@ function Slider({ left, progress, direction }: { left: string, progress: MotionV
   const movementDirection = direction === "left" ? -1 : 1;
   const x = useTransform(progress, [0, 1], [-250 * movementDirection, 250 * movementDirection]);
   return (
-    <motion.div
-      style={{
-        left,
-        x
-      }} 
-      className="relative flex whitespace-nowrap"
-    >
-      <Phrase/>
-      <Phrase/>
-      <Phrase/>
-    </motion.div>
+    <ReactLenis root>
+      <motion.div
+        style={{
+          left,
+          x
+        }} 
+        className="relative flex whitespace-nowrap"
+      >
+        <Phrase/>
+        <Phrase/>
+        <Phrase/>
+      </motion.div>
+    </ReactLenis>
   )
   }
   
