@@ -1,6 +1,6 @@
 "use client";
 
-import { Center, Environment, Preload } from "@react-three/drei";
+import { Center, Environment, Preload, Text } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import CameraRig from "@/components/3D/CameraRig";
 import Backdrop from "@/components/3D/Backdrop";
@@ -15,14 +15,14 @@ const Scene1 = () => {
      shadows
      camera={{position: [0, 0, 0], fov: 10}}
      gl={{preserveDrawingBuffer: true}}
-     className='absolute w-full max-w-full h-svh transition-all ease-in z-20'
+     className='absolute w-full max-w-full h-svh transition-all ease-in z-20 max-[1328px]:mt-72'
     >
       <ambientLight intensity={0.5}/>
       <Environment preset='city'/>
       <CameraRig>
           <Backdrop/>
           <Center>
-            <Suspense fallback={null}>
+            <Suspense fallback={<Text>Loading</Text>}>
               <CopperIngot/>
             </Suspense>
           </Center>
