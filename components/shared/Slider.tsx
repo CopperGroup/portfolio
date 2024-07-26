@@ -44,10 +44,14 @@ const Slider = ({ cards }: { cards: Card[] }) => {
                 animate={{
                     translateX: `-${imageIndex * 100}%`
                 }}
+                transition={{
+                    type: "spring",
+                    damping: 15
+                }}
                 onDragStart={onDragStart}
                 onDragEnd={onDragEnd}
                 className="flex items-center cursor-grab active:cursor-grabbing"
-                >
+            >
                 {cards.map((card, index) => {
                     return(
                         <article key={index} className="w-screen aspect-video shrink-0 pl-[7%]">
@@ -59,7 +63,7 @@ const Slider = ({ cards }: { cards: Card[] }) => {
                              }}
                              className="aspect-video w-11/12 shrink-0 rounded-xl bg-neutral-800 object-cover shadow-xl"
                             ></div>
-                            <p className="text-body-semibold pl-3 mt-2">{card.name}</p>
+                            <p className="text-body-semibold text-center mt-2 pr-[7%]">{card.name}</p>
                         </article>
                         ) 
                 })}

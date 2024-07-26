@@ -30,7 +30,6 @@ function Slider({ left, progress, direction }: { left: string, progress: MotionV
   const movementDirection = direction === "left" ? -1 : 1;
   const x = useTransform(progress, [0, 1], [-250 * movementDirection, 250 * movementDirection]);
   return (
-    <ReactLenis root>
       <motion.div
         style={{
           left,
@@ -42,15 +41,14 @@ function Slider({ left, progress, direction }: { left: string, progress: MotionV
         <Phrase/>
         <Phrase/>
       </motion.div>
-    </ReactLenis>
   )
   }
   
   function Phrase() {
     return (
       <div className={'px-5 flex gap-5 items-center'}>
-          <p className='text-[7.5vw]'>Full-stack Developers</p>
-          <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden gradient">
+          <p className="text-[7.5vw] max-[800px]:text-[12vw] max-[600px]:text-[15vw]">Full-stack Developers</p>
+          <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden gradient max-[800px]:h-[12vw] max-[600px]:h-[15vw]">
           
           </span>
       </div>

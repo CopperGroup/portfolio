@@ -12,6 +12,7 @@ import { cards, projects } from "@/constants";
 import ProjectCard from "../cards/ProjectCard";
 import { useEffect, useRef } from "react";
 import Slider from "../shared/Slider";
+import Image from "next/image";
 
 interface Project {
   name: string;
@@ -99,8 +100,23 @@ const Projects = () => {
            
         </motion.div>
       </div>
-      <div>
+      <div className="min-[900px]:hidden">
         <Slider cards={cards}/>
+        <div className="w-full flex gap-2 justify-center items-center -mt-7 pb-7 mr-2">
+          <Image
+            src="/assets/arrow-left.svg"
+            width={24}
+            height={24}
+            alt="arrow-left"
+          />
+          <p className="text-subtle-medium text-neutral-500 text-end">Swipe</p>
+          <Image
+            src="/assets/arrow-right.svg"
+            width={24}
+            height={24}
+            alt="arrow-left"
+          />
+        </div>
       </div>
     </motion.section>
   )
