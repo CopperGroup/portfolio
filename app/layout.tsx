@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} w-full bg-dark-1 custom-scrollbar overflow-x-hidden border`}>
         <Header/>
-        <main className="w-full overflow-x-hidden border border-green-500">
+        <main className="w-full overflow-x-hidden">
           {children}
         </main>
       </body>

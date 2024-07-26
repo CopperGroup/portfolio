@@ -26,28 +26,28 @@ const Hero = () => {
         //  style={{
         //    backgroundImage,
         //  }} 
-         className="w-full px-12 h-screen max-[1328px]:h-[125vh] flex flex-col border border-red-500">
+         className="relative w-full px-12 h-screen max-[1328px]:h-[125vh] flex flex-col max-[700px]:px-0">
           <motion.div
            style={{
              y: y1
             }}
             className={`${archivo.className} w-full h-full relative z-10`}
             >
-            <h1 className="w-fit text-[11rem] gradient-text leading-none pt-52 max-[1328px]:w-full max-[1328px]:text-center max-[900px]:text-[8rem] border">COPPER</h1>
-            <h1 className="w-fit text-[172px] gradient-text leading-none max-[1328px]:w-full max-[1328px]:text-center max-[900px]:text-[8rem] border">GROUP</h1>
+            <h1 className="w-fit text-[11rem] gradient-text leading-none pt-52 max-[1328px]:w-full max-[1328px]:text-center max-[900px]:text-[8rem] max-[1328px]:pt-36 max-[630px]:text-[6rem] max-[460px]:text-[5rem] max-[390px]:text-[4.5rem] max-[340px]:text-[4rem]">COPPER</h1>
+            <h1 className="w-fit text-[172px] gradient-text leading-none max-[1328px]:w-full max-[1328px]:text-center max-[900px]:text-[8rem] max-[630px]:text-[6rem] max-[460px]:text-[5rem] max-[390px]:text-[4.5rem] max-[340px]:text-[4rem]">GROUP</h1>
           </motion.div>
           <motion.div 
            style={{
             y: y2
            }}
-           className="absolute flex items-center justify-around inset-0 z-20 max-[1440px]:ml-32 border"
+           className="absolute flex items-center justify-around inset-0 z-20 max-[1440px]:ml-32 max-[1328px]:ml-0 max-[630px]:-mt-36 max-[1328px]:mt-72 max-[900px]:mt-40" 
           >
             <Scene1/>
             <motion.div
              style={{
               scale: scale
              }} 
-             className="absolute z-10 w-96 h-96 rounded-full blury-gradient opacity-70 ml-[38rem] mt-10 max-[1328px]:ml-0 max-[1328px]:mt-[52rem]"
+             className="absolute z-10 size-96 rounded-full blury-gradient opacity-70 ml-[38rem] mt-10 max-[1328px]:ml-0 max-[1328px]:mt-[13rem] max-[1328px]:size-80 max-[630px]:size-80 max-[630px]:mt-[12rem] max-[460px]:size-72 max-[460px]:mt-[11rem] max-[390px]:mt-[10rem] max-[390px]:size-64"
             >
             </motion.div>
   

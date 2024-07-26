@@ -34,7 +34,7 @@ const Final = () => {
      style={{
       backgroundImage
      }} 
-     className="w-full h-screen flex flex-1 flex-col justify-center items-center text-white"
+     className="relative w-full h-screen flex flex-1 flex-col justify-center items-center text-white"
     >
       <Canvas className="absolute z-20 pointer-events-none">
         <CameraRig>

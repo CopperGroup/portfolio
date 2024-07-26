@@ -5,11 +5,19 @@ import * as THREE from 'three';
 
 const CameraRig = ({ children }: { children: React.ReactNode }) => {
   const group = React.useRef<THREE.Group>(null!); 
-  
+
   useFrame((state, delta) => {
     const screenWidth = window.screen.width;
-  
-    const targetPosition: [number, number, number] = [screenWidth < 1328 ? 0 : -1, screenWidth > 1328 ? 0 : 1, screenWidth > 1328 ? 17 : 20];
+
+    const targetPosition: [number, number, number] = [screenWidth < 1328 ? 0 : -1, screenWidth > 1328 ? 0 : 0.5,  screenWidth > 1328 
+      ? 17 
+      : screenWidth < 630 
+      ? screenWidth < 460 
+        ? screenWidth < 390 
+          ? 45 
+          : 40 
+        : 35
+      : 25];
 
 
     easing.damp3(state.camera.position, targetPosition, 0.25, delta);

@@ -15,7 +15,7 @@ const Scene1 = () => {
      shadows
      camera={{position: [0, 0, 0], fov: 10}}
      gl={{preserveDrawingBuffer: true}}
-     className='absolute w-full max-w-full h-svh transition-all ease-in z-20 max-[1328px]:mt-72'
+     className='w-full max-w-full h-svh transition-all ease-in z-20'
     >
       <ambientLight intensity={0.5}/>
       <Environment preset='city'/>

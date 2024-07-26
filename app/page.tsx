@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactLenis } from 'lenis/react';
 import { Archivo_Black } from "next/font/google";
 import Projects from "@/components/sections/Projects";
@@ -10,12 +12,13 @@ import Hero from '@/components/sections/Hero';
 export default function Home() {
 
   return (
-    <>
+    <ReactLenis root>
       <Hero/>
       <Projects/>
       <Specialization/>
       <Skils/>
       <Final/>
-    </>
+
+    </ReactLenis>
   );
 }
