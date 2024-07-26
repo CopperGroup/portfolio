@@ -47,16 +47,16 @@ const Final = () => {
         ref={ref}
         initial="initial"
         whileHover="hovered"
-        className="block overflow-hidden whitespace-nowrap" 
+        className="overflow-hidden flex flex-col justify-center items-center px-7" 
       >
           <motion.p
            animate={{
-             y: inView ? 0 : 100
+             y: inView ? 0 : 130
            }}
            transition={{
              delay: 2.3
            }}
-           className="text-white/90"
+           className="text-white/90 text-center"
           >
             Of customers decide to trust a business based on its <span className="italic">appearance</span>. That&apos;s where great <span className="italic">design</span> and <span className="italic">brand</span> come in hand!
           </motion.p>
