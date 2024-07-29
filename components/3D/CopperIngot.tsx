@@ -5,7 +5,7 @@ const CopperIngot = () => {
   const { nodes } = useGLTF("/3D/Copper-ingot.glb");
   
   return (
-    <group>
+    <group scale={[1, 1, 1]}>
         <mesh {...nodes.mesh_0}></mesh>
       </group>
     );

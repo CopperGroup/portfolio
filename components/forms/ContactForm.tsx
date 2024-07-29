@@ -75,17 +75,19 @@ const ContactForm = () => {
 
     const previousPage = () => {
         if(pageIndex !== 0) {
-            setPageIndex(currentPageIndex => currentPageIndex - 1);
             setDirection("Backwards");
+            setPageIndex(currentPageIndex => currentPageIndex - 1);
         }
     }
 
     const nextPage = () => {
         if(pageIndex < 2) {
-            setPageIndex(currentPageIndex => currentPageIndex + 1);
             setDirection("Forward");
+            setPageIndex(currentPageIndex => currentPageIndex + 1);
         }
     }
+
+    useEffect(() => console.log(direction), [direction]);
 
     const pages = [
         {
@@ -138,7 +140,7 @@ const ContactForm = () => {
                                         <div className="w-full h-2/5 flex border-blue">
                                             <div className="w-1/2 h-full border-violet-500">
                                                 <motion.div
-                                                    key={pageIndex}
+                                                    // key={direction === "Forward" ? direction : null}
                                                     initial={{
                                                         x: -50,
                                                         y: -100,
@@ -170,7 +172,7 @@ const ContactForm = () => {
                                             </div>
                                             <div className="w-1/2 h-full flex justify-end border-violet-500 overflow-hidden">
                                                 <motion.div
-                                                    key={pageIndex}
+                                                    // key={pageIndex}
                                                     initial={{
                                                         x: 100,
                                                         y: -100, 
@@ -201,7 +203,7 @@ const ContactForm = () => {
                                         <div className="w-full h-1/5 border-blue">
                                             <div className="w-full h-24 flex justify-center items-center border-violet-500">
                                                 <motion.h2
-                                                    key={pageIndex} 
+                                                    // key={pageIndex} 
                                                     initial={{
                                                         y: 100,
                                                         opacity: 0
@@ -220,7 +222,7 @@ const ContactForm = () => {
                                             </div>
                                             <div className="w-full h-2/5 flex justify-center items-center border-violet-500">
                                                 <motion.input
-                                                    key={pageIndex}
+                                                    // key={pageIndex}
                                                     initial={{
                                                         y: 100,
                                                         opacity: 0
@@ -243,7 +245,7 @@ const ContactForm = () => {
                                         </div>
                                         <div className="w-full h-2/5 flex border-blue">
                                             <motion.div
-                                                key={pageIndex}
+                                                // key={pageIndex}
                                                 initial={{
                                                     x: -100,
                                                     y: 100, 
@@ -282,7 +284,7 @@ const ContactForm = () => {
                                                             type: "spring",
                                                             duration: 0.5
                                                         }}
-                                                        onClick={() => pageIndex !== 0 && setPageIndex(currentPageIndex => currentPageIndex - 1)}
+                                                        onClick={() => previousPage()}
                                                     >
                                                         <HiArrowLongLeft className={`size-16 cursor-pointer ${ pageIndex !== 0 ? "text-white" : "text-neutral-400"}`}/>
                                                     </motion.div>
@@ -299,7 +301,7 @@ const ContactForm = () => {
                                                                 type: "spring",
                                                                 duration: 0.5
                                                             }}
-                                                            onClick={() => setPageIndex(currentPageIndex => currentPageIndex + 1)}
+                                                            onClick={() => nextPage()}
                                                         >
                                                             <HiArrowLongRight className={`size-16 cursor-pointer`}/>
                                                         </motion.div>
@@ -359,7 +361,7 @@ const ContactForm = () => {
                                     type: "spring",
                                     duration: 0.5
                                 }}
-                                onClick={() => pageIndex < 2 && setPageIndex(currentPageIndex => currentPageIndex + 1)}
+                                onClick={() => nextPage()}
                             >
                                 <HiArrowLongRight className={`size-12 cursor-pointer ${pageIndex === 2 ? "text-neutral-500" : "text-white"}`}/>
                             </motion.div>

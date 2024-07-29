@@ -6,12 +6,21 @@ import * as THREE from 'three';
 const CameraRig = ({ children }: { children: React.ReactNode }) => {
   const group = React.useRef<THREE.Group>(null!); 
 
+  const calculateCoefficient = (screenHeight: number): number => {
+    const referenceHeight = 935;
+    if (screenHeight >= referenceHeight) return 0;
+    return (referenceHeight - screenHeight) * 0.0015; // Adjust this multiplier to control the movement
+  };
+
   useFrame((state, delta) => {
     const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
 
-    console.log(screenWidth);
+    const coefficient = calculateCoefficient(screenHeight)
 
-    const targetPosition: [number, number, number] = [screenWidth <= 1328 ? 0 : -1, screenWidth > 1328 ? 0 : 0.5,  screenWidth > 1328 
+    console.log(screenHeight, coefficient);
+
+    const targetPosition: [number, number, number] = [screenWidth <= 1328 ? 0 : -1 - coefficient, screenWidth > 1328 ? 0 : 0.5,  screenWidth > 1328 
       ? 17 
       : screenWidth < 630 
       ? screenWidth < 460 
