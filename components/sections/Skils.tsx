@@ -72,7 +72,7 @@ const Skils = () => {
             >
               <SiNextdotjs className="size-56 rounded-full border shadow-xl"/> 
             </motion.div>
-            <div className="w-full h-1/6 text-black border">
+            <div className="w-full h-1/6 text-black">
               <h4 className="text-heading4-medium">Next.js</h4>
               <p className="text-base-regular text-gray-500/90 max-[400px]:hidden">One of the best frameworks for creating cutting-edge web-applications.</p>
               <p className="text-base-regular text-gray-500/90 min-[400px]:hidden">Framework for cutting-edge web-applications.</p>
@@ -91,7 +91,7 @@ const Skils = () => {
             duration: 0.5
            }}
           >
-            <div className="w-full h-5/6 flex justify-center items-center max-[1440px]:mb-[5%] max-[1213px]:mb-[12%] max-[1069px]:mb-[5%]">
+            <div className="w-full h-5/6 flex justify-center items-center max-[1440px]:mb-[5%] max-[1228px]:mb-[12%] max-[1069px]:mb-[5%]">
               <SiReact className="size-52 rounded-full border text-black shadow-xl p-5"/> 
             </div>
             <div className="w-full h-1/6 text-black">
@@ -109,7 +109,7 @@ const Skils = () => {
            }}
           >
             <motion.div 
-             className="w-1/2 h-full px-5 border rounded-2xl shadow-xl max-[1440px]:pt-[3%] max-[1440px]:pb-[1%] max-[520px]:w-full max-[520px]:pb-[3%]"
+             className="w-1/2 px-5 border rounded-2xl shadow-xl max-[1440px]:pt-[3%] max-[1440px]:pb-[1%] max-[846px]:pb-5 max-[520px]:w-full max-[520px]:pb-[3%]"
              whileHover={{
               scale: 1.01
              }}
@@ -121,13 +121,13 @@ const Skils = () => {
                 <div className="w-full h-2/3 flex justify-center items-center max-[1440px]:mb-[5%]">
                   <SiMongodb className="size-28 rounded-full border text-black shadow-xl p-5"/> 
                 </div>
-                <div className="w-full h-1/3 text-black">
+                <div className="w-full h-1/3 text-black max-[1440px]:-mt-3">
                   <h4 className="text-body-medium">MongoDB</h4>
                   <p className="text-small-regular text-gray-500/90">The advanced high-performance database.</p>
                 </div>
             </motion.div>
             <motion.div 
-             className="w-1/2 h-full px-5 border rounded-2xl shadow-xl max-[1440px]:pt-[3%] max-[1440px]:pb-[1%] max-[520px]:w-full max-[520px]:pb-[3%]"
+             className="w-1/2 h-full pb-3 px-5 border rounded-2xl shadow-xl max-[1440px]:pt-[3%] max-[1440px]:pb-[1%] max-[846px]:pb-10 max-[520px]:w-full max-[520px]:pb-[3%]"
              whileHover={{
               scale: 1.01
              }}
@@ -139,7 +139,7 @@ const Skils = () => {
               <div className="w-full h-2/3 flex justify-center items-center max-[1440px]:mb-[5%]">
                 <SiThreedotjs className="size-28 rounded-full border text-black shadow-xl p-5 pl-8 pt-6 overflow-visible"/> 
               </div>
-              <div className="w-full h-1/3 text-black">
+              <div className="w-full h-1/3 text-black max-[1440px]:-mt-3">
                 <h4 className="text-body-medium">Three.js</h4>
                 <p className="text-small-regular text-gray-500/90">Enchance your website with beautiful 3D.</p>
               </div>

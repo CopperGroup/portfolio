@@ -312,11 +312,20 @@ const ContactForm = () => {
                                                      style={{
                                                         background: `radial-gradient(circle at ${backgroundPercentageX}% ${backgroundPercentageY}%, #662E00 0%, #00000000 0%)`,
                                                      }} 
+                                                     initial={{
+                                                        opacity: 0
+                                                     }}
+                                                     animate={{
+                                                        opacity: 1
+                                                     }}
                                                      whileHover={{
                                                         background: `radial-gradient(circle at ${backgroundPercentageX}% ${backgroundPercentageY}%, #662E00 30%, #D47800 100%)`
                                                      }}
                                                      transition={{
-                                                        type: "tween"
+                                                        type: "tween",
+                                                        opacity: {
+                                                            delay: 0.25
+                                                        }
                                                      }}
                                                      type="submit" 
                                                      className="w-56 h-10 rounded-3xl border max-[420px]:text-small-regular max-[360px]:text-subtle-medium px-2 max-[380px]:w-72"
