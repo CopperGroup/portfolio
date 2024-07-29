@@ -9,7 +9,9 @@ const CameraRig = ({ children }: { children: React.ReactNode }) => {
   useFrame((state, delta) => {
     const screenWidth = window.screen.width;
 
-    const targetPosition: [number, number, number] = [screenWidth < 1328 ? 0 : -1, screenWidth > 1328 ? 0 : 0.5,  screenWidth > 1328 
+    console.log(screenWidth);
+
+    const targetPosition: [number, number, number] = [screenWidth <= 1328 ? 0 : -1, screenWidth > 1328 ? 0 : 0.5,  screenWidth > 1328 
       ? 17 
       : screenWidth < 630 
       ? screenWidth < 460 
